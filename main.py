@@ -30,18 +30,18 @@ for item in items:
         meses = calcular_tempo_em_meses(tempo_criacao)
         # print(f"Arquivo: {item} - Tempo desde criação: {meses} meses")
 
-        if meses >= 1:
+        if meses >= 1: # Mover o arquivo para a pasta em documentos
             destino = os.path.join(nova_pasta, item)
             os.rename(caminho_arquivo, destino)
-            # print(f"Arquivo {item} movido para {nova_pasta}")
+            print(f"Arquivo {item} movido para {nova_pasta}")
 
     elif os.path.isdir(caminho_arquivo):
         tempo_criacao = os.path.getctime(caminho_arquivo)
         meses = calcular_tempo_em_meses(tempo_criacao)
-        # print(f"Pasta: {item} - Tempo desde criação: {meses} meses")
+        print(f"Pasta: {item} - Tempo desde criação: {meses} meses")
         
 
-        if meses > 1:
+        if meses > 1: # Mover a pasta para a pasta em documentos
             destino = os.path.join(nova_pasta, item)
             os.rename(caminho_arquivo, destino)
             # print(f"Pasta {item} movida para {nova_pasta}")
