@@ -1,13 +1,13 @@
 import os
 from datetime import datetime
 
-caminho_downloads = os.path.join(os.path.expanduser("~"), "Downloads")
-caminho_documentos = os.path.join(os.path.expanduser("~"), "Documents")
+caminho_downloads = os.path.join(os.path.expanduser("~"), "Downloads") # C:\Users\seu_nome\Downloads
+caminho_documentos = os.path.join(os.path.expanduser("~"), "Documents") # C:\User\seu_nome\Documents
 
-nova_pasta = os.path.join(caminho_documentos, "ARQUIVOS_CRIADOS_A_UM_MES_OU_MAIS")
+nova_pasta = os.path.join(caminho_documentos, "ARQUIVOS_CRIADOS_A_UM_MES_OU_MAIS") # C:\User\seu_nome\Documents\ARQUIVOS_CRIADOS_A_UM_MES_OU_MAIS
 
 def calcular_tempo_em_meses(creation_time):
-    data_criacao = datetime.fromtimestamp(creation_time)
+    data_criacao = datetime.fromtimestamp(creation_time) #Tempo em segundos
     data_atual = datetime.now()
 
     anos = data_atual.year - data_criacao.year
@@ -21,11 +21,12 @@ except FileExistsError:
     print(f"Pasta já existe: {nova_pasta}")
 
 items = os.listdir(caminho_downloads)
+
 for item in items:
-    caminho_arquivo = os.path.join(caminho_downloads, item)
+    caminho_arquivo = os.path.join(caminho_downloads, item) # C:\User\seu_nome\Downloads\arquivo
 
     if os.path.isfile(caminho_arquivo):
-        tempo_criacao = os.path.getctime(caminho_arquivo)
+        tempo_criacao = os.path.getctime(caminho_arquivo) 
         meses = calcular_tempo_em_meses(tempo_criacao)
         # print(f"Arquivo: {item} - Tempo desde criação: {meses} meses")
 
